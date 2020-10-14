@@ -5,7 +5,16 @@ interface AppProps {
   color?: string;
 }
 
-class App extends React.Component<AppProps> {
+/** Functional Components return JSX.Element as below, otherwise similar */
+// const App = (props: AppProps): JSX.Element => {
+//   return <div>{props.color}</div>;
+// };
+
+interface AppState {
+  counter: number;
+}
+
+class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = { counter: 0 };
@@ -16,15 +25,18 @@ class App extends React.Component<AppProps> {
   };
 
   onDecrement = (): void => {
-    this.setState({ counter: this.state.counter - 1 });
+    if (this.state.counter > 0) {
+      this.setState({ counter: this.state.counter - 1 });
+    }
   };
 
   render() {
     return (
       <div>
-        <button onClick={this.onIncrement}>Increment</button>
-        <button onClick={this.onDecrement}>Decrement</button>
-        {this.state.counter}
+        How many would you like?
+        <button onClick={this.onIncrement}> + </button>
+        <button onClick={this.onDecrement}> - </button>
+        <div>{this.state.counter}</div>
       </div>
     );
   }
