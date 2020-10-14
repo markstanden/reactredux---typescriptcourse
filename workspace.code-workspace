@@ -5,8 +5,6 @@
     }
   ],
   "settings": {
-    //autosave
-    "files.autoSave": "afterDelay",
     // Prettier
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -18,12 +16,62 @@
     "editor.codeActionsOnSave": {
       // ESLint
       "source.fixAll.eslint": true
-    }
-  },
+    },
 
-  "files.watcherExclude": {
-    "**/.git/objects/**": true,
-    "**/.git/subtree-cache/**": true,
-    "**/node_modules/*/**": true
+    //autosave
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 10000,
+    // Get out of my way
+    "editor.minimap.enabled": false,
+
+    // VS Code really struggles with the large node library size
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**": true,
+      "**/tmp/**": true,
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/dist/**": true,
+      "**/log /**": true,
+      "**/logs/**": true,
+      "**/.fdk/**": true
+    },
+    "files.exclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**": true,
+      "**/tmp/**": true,
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/dist/**": true,
+      "**/log/**": true,
+      "**/.fdk/**": true
+    },
+    "search.exclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**": true,
+      "**/tmp/**": true,
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/dist/**": true,
+      "**/log/**": true
+    }
   }
 }
