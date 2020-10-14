@@ -1,45 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
-interface AppProps {
-  color?: string;
-}
+import { App } from "./components/App";
+import { reducers } from "./reducers";
 
-/** Functional Components return JSX.Element as below, otherwise similar */
-// const App = (props: AppProps): JSX.Element => {
-//   return <div>{props.color}</div>;
-// };
+const store = createStore(reducers, applyMiddleware(thunk));
 
-interface AppState {
-  counter: number;
-}
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
 
-class App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
-    super(props);
-    this.state = { counter: 0 };
-  }
-
-  onIncrement = (): void => {
-    this.setState({ counter: this.state.counter + 1 });
-  };
-
-  onDecrement = (): void => {
-    if (this.state.counter > 0) {
-      this.setState({ counter: this.state.counter - 1 });
-    }
-  };
-
-  render() {
-    return (
-      <div>
-        How many would you like?
-        <button onClick={this.onIncrement}> + </button>
-        <button onClick={this.onDecrement}> - </button>
-        <div>{this.state.counter}</div>
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
+  document.getElementById("root")
+);
