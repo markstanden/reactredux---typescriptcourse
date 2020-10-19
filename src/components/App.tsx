@@ -19,7 +19,7 @@ class _App extends React.Component<AppProps> {
     this.props.deleteTodo(id);
   };
 
-  renderList = (): JSX.Element[] => {
+  renderList(): JSX.Element[] {
     return this.props.todos.map((todo: ToDoObject) => {
       return (
         <div onClick={() => this.onTodoClick(todo.id)} key={todo.id}>
@@ -27,7 +27,7 @@ class _App extends React.Component<AppProps> {
         </div>
       );
     });
-  };
+  }
 
   render() {
     return (

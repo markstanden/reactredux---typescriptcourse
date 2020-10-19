@@ -11,21 +11,21 @@ export interface ToDoObject {
   completed: boolean;
 }
 
-export interface FetchToDosAction {
+export interface FetchTodosAction {
   type: ActionTypes.fetchTodos;
   payload: ToDoObject[];
 }
 
 export interface DeleteTodoAction {
   type: ActionTypes.deleteTodo;
-  payload: Number;
+  payload: number;
 }
 
 export const fetchTodos = () => {
   return async (dispatch: Dispatch) => {
     const response = await axios.get<ToDoObject[]>(url);
 
-    dispatch<FetchToDosAction>({
+    dispatch<FetchTodosAction>({
       type: ActionTypes.fetchTodos,
       payload: response.data,
     });
